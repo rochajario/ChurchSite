@@ -1,0 +1,121 @@
+﻿@page
+@model Church.Web.Areas.Identity.Pages.Account.Manage.IndexModel
+@{
+    ViewData["Title"] = "Perfil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<!-- Nav Tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="link-1-tab" data-bs-toggle="tab" data-bs-target="#link-1" type="button" role="tab" aria-controls="link-1" aria-selected="true">
+            Meus Dados Pessoais
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="link-2-tab" data-bs-toggle="tab" data-bs-target="#link-2" type="button" role="tab" aria-controls="link-2" aria-selected="false">
+            Minha Senha
+        </button>
+    </li>
+</ul>
+
+<!-- Tab Content -->
+<div class="tab-content mt-3">
+    <!-- Aba 1 -->
+    <div class="tab-pane fade show active" id="link-1" role="tabpanel" aria-labelledby="link-1-tab">
+        <h4>Meus Dados Pessoais</h4>
+        <p>Gerencie seus dados pessoais</p>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <form id="profile-form" method="post" asp-page-handler="UpdateProfile">
+
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label asp-for="PersonalData.FirstName" class="form-label">Nome</label>
+                            <input asp-for="PersonalData.FirstName" class="form-control" placeholder="Informe o seu Nome" />
+                            <span asp-validation-for="PersonalData.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col mb-3">
+                            <label asp-for="PersonalData.LastName" class="form-label">Sobrenome</label>
+                            <input asp-for="PersonalData.LastName" class="form-control" placeholder="Informe o seu Sobrenome" />
+                            <span asp-validation-for="PersonalData.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="mb-3 col-4">
+                            <label asp-for="PersonalData.PostalCode" class="form-label">CEP</label>
+                            <input asp-for="PersonalData.PostalCode" class="form-control" placeholder="Informe o seu CEP" />
+                            <span asp-validation-for="PersonalData.PostalCode" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label asp-for="PersonalData.Street" class="form-label">Endereço</label>
+                            <input asp-for="PersonalData.Street" class="form-control" placeholder="Informe o seu Endereço" />
+                            <span asp-validation-for="PersonalData.Street" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 col-2">
+                            <label asp-for="PersonalData.Number" class="form-label">Número</label>
+                            <input asp-for="PersonalData.Number" class="form-control" placeholder="Informe o seu Número" />
+                            <span asp-validation-for="PersonalData.Number" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col">
+                            <label asp-for="PersonalData.Complement" class="form-label">Complemento</label>
+                            <input asp-for="PersonalData.Complement" class="form-control" placeholder="Informe o complemento de seu Endereço" />
+                            <span asp-validation-for="PersonalData.Complement" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 col">
+                            <label asp-for="PersonalData.City" class="form-label">Cidade</label>
+                            <input asp-for="PersonalData.City" class="form-control" placeholder="Informe a sua Cidade" />
+                            <span asp-validation-for="PersonalData.City" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PersonalData.Phone" class="form-label">Celular</label>
+                        <input asp-for="PersonalData.Phone" class="form-control" placeholder="Informe seu Celular" />
+                        <span asp-validation-for="PersonalData.Phone" class="text-danger"></span>
+                    </div>
+
+                    <button id="update-profile-button" type="submit" class="w-25 btn btn-lg btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Aba 2 -->
+    <div class="tab-pane fade" id="link-2" role="tabpanel" aria-labelledby="link-2-tab">
+        <h4>Minha Senha</h4>
+        <p>Gerencie sua senha de acesso</p>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-6">
+                <form id="change-password-form" method="post" asp-page-handler="ChangePassword">
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="PasswordChange.CurrentPassword" class="form-control" type="password" autocomplete="current-password" aria-required="true" placeholder="Informe sua senha anterior." />
+                        <label asp-for="PasswordChange.CurrentPassword" class="form-label"></label>
+                        <span asp-validation-for="PasswordChange.CurrentPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="PasswordChange.NewPassword" class="form-control" type="password" autocomplete="new-password" aria-required="true" placeholder="Informe sua nova senha." />
+                        <label asp-for="PasswordChange.NewPassword" class="form-label"></label>
+                        <span asp-validation-for="PasswordChange.NewPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="PasswordChange.PasswordConfirmation" class="form-control" type="password" autocomplete="new-password" aria-required="true" placeholder="Confirme sua nova senha." />
+                        <label asp-for="PasswordChange.PasswordConfirmation" class="form-label"></label>
+                        <span asp-validation-for="PasswordChange.PasswordConfirmation" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="w-100 btn btn-lg btn-primary">Atualizar senha</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

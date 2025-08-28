@@ -1,0 +1,208 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Início";
+    ViewBag.Container = "";
+}
+
+<section class="index-page">
+    <main class="main">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero section dark-background text-bg-dark">
+
+            <div class="hero-container">
+                <video autoplay="" muted="" loop="" playsinline="" class="video-background">
+                    <source src="~/images/hero.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7">
+                            <div class="hero-content">
+                                <h1>Igreja Batista Reformada em Belo Horizonte</h1>
+                                <p>Somos uma comunidade cristã comprometida com a centralidade da Palavra de Deus, a adoração reverente e a edificação mútua em Cristo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /Hero Section -->
+        <!-- About Section -->
+        <section id="about" class="about section">
+
+            <div class="container">
+
+                <div class="row mb-5">
+                    <div class="col-lg-6 pe-lg-5">
+                        <h2 class="display-6 fw-bold mb-4">Proclamando Cristo, <span>edificando vidas e glorificando a Deus em tudo.</span></h2>
+                        <p class="lead mb-4">
+                            Como batistas reformados, afirmamos a centralidade da pregação expositiva das Escrituras, a importância da oração, a adoração reverente e a vida comunitária marcada pelo amor fraternal. Buscamos viver e anunciar o evangelho de Cristo, chamando todos ao arrependimento e à fé somente em Jesus como Senhor e Salvador.
+                        </p>
+                        <p class="lead mb-4">
+                            Nossa missão é glorificar a Deus através da proclamação fiel do evangelho, do discipulado bíblico e do serviço ao próximo. Queremos ser uma comunidade acolhedora, onde famílias, jovens e crianças possam crescer na fé, sendo fortalecidos pela Palavra e guiados pelo Espírito Santo.
+                        </p>
+                        <p class="lead mb-4">
+                            Se você procura uma igreja comprometida com a verdade do evangelho e com a edificação mútua no corpo de Cristo, será uma alegria caminhar ao seu lado para juntos seguirmos a Cristo e proclamarmos Sua graça ao mundo.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="image-stack">
+                            <div class="image-stack-item image-stack-item-top">
+                                <img src="~/images/1.png" alt="Membros da comunidade" class="img-fluid rounded-4 shadow-lg">
+                            </div>
+                            <div class="image-stack-item image-stack-item-bottom">
+                                <img src="~/images/2.png" alt="Ações da comunidade" class="img-fluid rounded-4 shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /About Section -->
+        @if (Model.Events.Any())
+        {
+            <!-- Events Section -->
+            <section id="events" class="events section">
+
+                <!-- Section Title -->
+                <div class="container section-title">
+                    <h2>Eventos</h2>
+                    <p class="lead mb-4">Descubra como podemos crescer em fé e unidade ao longo desta semana</p>
+                </div><!-- End Section Title -->
+
+                <div class="container">
+
+                    <div class="row g-4">
+                        @foreach (var item in Model.Events)
+                        {
+                            <div class="col-lg-6">
+                                <div class="event-card">
+                                    <div class="event-date">
+                                        <span class="month">@item.Date.Month</span>
+                                        <span class="day">@item.Date.Day</span>
+                                        <span class="year">@item.Date.Year</span>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-tag sports">Evento</div>
+                                        <h3>@item.Name</h3>
+                                        <p>@item.Description</p>
+                                        <div class="event-meta">
+                                            <div class="meta-item">
+                                                <i class="bi bi-clock"></i>
+                                                <span>@item.Date.TimeOfDay</span>
+                                            </div>
+                                            <div class="meta-item">
+                                                <i class="bi bi-geo-alt"></i>
+                                                <span>IBRBH</span>
+                                            </div>
+                                        </div>
+                                        <div class="event-actions">
+                                            <a href="#" class="btn-calendar"><i class="bi bi-calendar-plus"></i> Adicionar ao Calendário</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </section>
+        }
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="container section-title">
+                <h2>Contato</h2>
+                <p class="lead mb-4">Seja para um pedido de oração, uma dúvida ou apenas para compartilhar algo do coração, estaremos felizes em receber sua mensagem.</p>
+            </div><!-- End Section Title -->
+            <div class="container">
+
+                <!-- Contact Info Boxes -->
+                <div class="row gy-4 mb-5">
+                    <div class="col-lg-4">
+                        <div class="contact-info-box text-bg-dark">
+                            <div class="icon-box">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Nosso Endereço</h4>
+                                <p>Rua das Canárias, 50, Santa Branca, Belo Horizonte - MG</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="contact-info-box text-bg-dark">
+                            <div class="icon-box">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Nosso E-mail</h4>
+                                <p>contato@ibrbh.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="contact-info-box text-bg-dark">
+                            <div class="icon-box">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Nossos Horários</h4>
+                                <p><strong>EBD:</strong> Domingo 09:00 - 10:00</p>
+                                <p><strong>Culto Público:</strong> Domingo 10:00 - 11:45</p>
+                                <p><strong>Culto Público:</strong> Sábado 20:00 - 21:45</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="map-section">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3752.9901562919513!2d-43.97057462491393!3d-19.84036943552344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa691b62e8afebd%3A0xc4f42afd469a99a0!2sIgreja%20Batista%20Reformada%20Belo%20Horizonte!5e0!3m2!1spt-BR!2sbr!4v1756307332831!5m2!1spt-BR!2sbr" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section><!-- /Contact Section -->
+
+    </main>
+
+    <div id="footer" class="footer position-relative">
+
+        <div class="container footer-top">
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <div class="d-flex flex-row flex-nowrap align-items-center">
+                        <img src="~/images/logo.png" alt="IBRBH" />
+                        <a class="logo d-flex align-items-center" asp-area="" asp-page="/Index">
+                            <span class="sitename text-light">IBRBH</span>
+                        </a>
+                    </div>
+                    <div class="footer-contact pt-3">
+                        <p><strong>Rua das Canárias, 50</strong></p>
+                        <p>Santa Branca</p>
+                        <p><small>Belo Horizonte - MG</small></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Redes Sociais</h4>
+                    <ul>
+                        <li>
+                            <a href=""><i class="bi bi-instagram"></i> Instagram</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="bi bi-facebook"></i> Facebook</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

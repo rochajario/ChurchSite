@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link" asp-fragment="hero" asp-page="/Index" style="color: #fefdfc;">Início</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-fragment="about" asp-page="/Index" style="color: #fefdfc;">Sobre</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-fragment="events" asp-page="/Index" style="color: #fefdfc;">Eventos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-fragment="contact" asp-page="/Index" style="color: #fefdfc;">Contato</a>
+    </li>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <!--Links Privados-->
+        <li class="nav-item">
+            <a class="nav-link" style="color: #fefdfc;" asp-area="" asp-page="/Privacy">Privacidade</a>
+        </li>
+    }
+</ul>

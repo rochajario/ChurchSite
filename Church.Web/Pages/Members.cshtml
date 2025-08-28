@@ -1,0 +1,103 @@
+﻿@page
+@model Church.Web.Pages.MembersModel
+
+@{
+    ViewData["Title"] = "Lista de Membros";
+}
+
+<!-- Nav Tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="link-1-tab" data-bs-toggle="tab" data-bs-target="#link-1" type="button" role="tab" aria-controls="link-1" aria-selected="true">
+            Membros Pendentes
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="link-2-tab" data-bs-toggle="tab" data-bs-target="#link-2" type="button" role="tab" aria-controls="link-2" aria-selected="false">
+            Administradores
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="link-3-tab" data-bs-toggle="tab" data-bs-target="#link-3" type="button" role="tab" aria-controls="link-3" aria-selected="false">
+            Cadastros Incompletos
+        </button>
+    </li>
+</ul>
+
+<!-- Tab Content -->
+<div class="tab-content mt-3" id="myTabContent">
+    <!-- Aba 1 -->
+    <div class="tab-pane fade show active" id="link-1" role="tabpanel" aria-labelledby="link-1-tab">
+        <h4>Membros Aguardando Aprovação</h4>
+        @if (Model.MembersToValidate is { Count: > 0 })
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.MembersToValidate)
+                    {
+                        <tr>
+                            <td>@($"{user.FirstName} {user.FirstName}")</td>
+                            <td>
+                                <form method="post" asp-page-handler="Accept" asp-route-id="@user.Id" class="d-inline">
+                                    <button type="submit" class="btn btn-success text-light btn-sm">Aceitar</button>
+                                </form>
+                                <form method="post" asp-page-handler="Reject" asp-route-id="@user.Id" class="d-inline">
+                                    <button type="submit" class="btn btn-danger text-light btn-sm">Recusar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Nenhum membro pendente.</p>
+        }
+    </div>
+
+    <!-- Aba 2 -->
+    <div class="tab-pane fade" id="link-2" role="tabpanel" aria-labelledby="link-2-tab">
+        <h4>Administradores</h4>
+        @if (Model.MembersToPromote is { Count: > 0 })
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.MembersToPromote)
+                    {
+                        <tr>
+                            <td>@($"{user.FirstName} {user.FirstName}")</td>
+                            <td>
+                                <form method="post" asp-page-handler="Promote" asp-route-id="@user.Id" class="d-inline">
+                                    <button type="submit" class="btn btn-success text-light btn-sm">Promover</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Nenhum membro pendente.</p>
+        }
+    </div>
+
+    <!-- Aba 3 -->
+    <div class="tab-pane fade" id="link-3" role="tabpanel" aria-labelledby="link-3-tab">
+        <h4>Cadastros Incompletos</h4>
+        <p>Aqui vai o conteúdo da aba de usuários ativos.</p>
+    </div>
+</div>
